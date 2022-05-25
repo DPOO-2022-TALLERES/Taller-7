@@ -3,12 +3,16 @@ package uniandes.cupi2.almacen.mundo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertThrows;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.*;
 
+@SuppressWarnings("deprecation")
 public class TestAlmacen {
 	
 	private Almacen almacen;
@@ -87,6 +91,17 @@ public class TestAlmacen {
 		
 		
 	}
+	
+	
+	@Test
+	
+	public void valorVentas() {
+		
+		assertEquals(0, this.almacen.buscarNodo("112").darValorVentas(),0);
+	}
+	
+	
+	
 	
 	// Excepciones del Almacen
 	
