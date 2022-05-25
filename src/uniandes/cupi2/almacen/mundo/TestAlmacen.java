@@ -98,7 +98,6 @@ public class TestAlmacen {
 	}
 	
 	
-    // Excepciones de Categoria
 	
 	
 
