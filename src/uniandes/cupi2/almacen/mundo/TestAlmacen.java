@@ -14,6 +14,7 @@ public class TestAlmacen {
 	private Almacen almacen;
 	
 	
+	
 	@BeforeEach
 	
 	public void setUp() throws AlmacenException {
@@ -22,6 +23,11 @@ public class TestAlmacen {
 		// Crea un producto de prueba para las excepciones
 		
 		this.almacen.agregarProducto("1111", "2215", "Pukini", "xd", 100);
+		
+		// Crea un nodo de prueba para las excepciones
+		
+		this.almacen.agregarNodo("111", "Marca", "1390", "Puki");
+
 	
 	}
 	
@@ -84,6 +90,10 @@ public class TestAlmacen {
 	
 	// Excepciones del Almacen
 	
+	/* 
+	 * Si se elimina la raiz, lanzara excepcion
+	 */
+	
 	@Test
 	
 	public void eliminarLaRaizLanzaExcepcion () {
@@ -91,10 +101,26 @@ public class TestAlmacen {
 		assertThrows(AlmacenException.class,() -> this.almacen.eliminarNodo("1"));
 	}
 	
+	
+	/*	
+	 * Si se crea un nuevo producto que ya existe lanzara excepcion
+	 */
+	
 	@Test
 	public void agregarUnProductoQueYaExisteLanzaExcepcion() {
 		
 		assertThrows(AlmacenException.class,() -> this.almacen.agregarProducto("1111", "2215", "Pukini", "xd", 100));
+	}
+	
+	
+	/*	
+	 * Si se crea un nuevo nodo con el identificador de un nodo existente lanzara excepcion
+	 */
+	
+	@Test
+	public void agregarUnNodoLanzaExcepcion() {
+		
+		assertThrows(AlmacenException.class,() -> this.almacen.agregarNodo("111", "Marca", "1390", "Puki"));
 	}
 	
 	
