@@ -3,6 +3,7 @@ package uniandes.cupi2.almacen.mundo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 
 import java.io.File;
 
@@ -17,9 +18,15 @@ public class TestAlmacen {
 	
 	public void setUp() throws AlmacenException {
 		this.almacen =  new Almacen(new File("data/datos.txt"));
+		
+		// Crea un producto de prueba para las excepciones
+		
+		this.almacen.agregarProducto("1111", "2215", "Pukini", "xd", 100);
 	
 	}
 	
+	
+	// Pruebas correctas
 	
 	@Test
 	public void buscarNodos() {
@@ -74,6 +81,25 @@ public class TestAlmacen {
 		
 		
 	}
+	
+	// Excepciones del Almacen
+	
+	@Test
+	
+	public void eliminarLaRaizLanzaExcepcion () {
+		
+		assertThrows(AlmacenException.class,() -> this.almacen.eliminarNodo("1"));
+	}
+	
+	@Test
+	public void agregarUnProductoQueYaExisteLanzaExcepcion() {
+		
+		assertThrows(AlmacenException.class,() -> this.almacen.agregarProducto("1111", "2215", "Pukini", "xd", 100));
+	}
+	
+	
+    // Excepciones de Categoria
+	
 	
 
 }
