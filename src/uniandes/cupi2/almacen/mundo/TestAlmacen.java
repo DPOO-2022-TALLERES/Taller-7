@@ -16,6 +16,7 @@ import org.junit.jupiter.api.*;
 public class TestAlmacen {
 	
 	private Almacen almacen;
+	private Categoria categoria;
 	
 	
 	
@@ -24,6 +25,9 @@ public class TestAlmacen {
 	public void setUp() throws AlmacenException {
 		this.almacen =  new Almacen(new File("data/datos.txt"));
 		
+		// Creo una nueva Categoria "Gaming"
+		this.categoria =  new Categoria("11223344", "Gaming");
+		
 		// Crea un producto de prueba para las excepciones
 		
 		this.almacen.agregarProducto("1111", "2215", "Pukini", "xd", 100);
@@ -31,6 +35,7 @@ public class TestAlmacen {
 		// Crea un nodo de prueba para las excepciones
 		
 		this.almacen.agregarNodo("111", "Marca", "1390", "Puki");
+		
 
 	
 	}
@@ -112,6 +117,18 @@ public class TestAlmacen {
 		
 		assertFalse(this.almacen.darCategoriaRaiz().darPreorden().isEmpty());
 	}
+	
+	
+	
+	
+	@Test
+	
+	public void agregarNodoNuevaCategoria() throws AlmacenException {
+		
+		this.categoria.agregarNodo("11223344", "Categoria", "12043", "Audifonos");
+	}
+	
+	
 	
 	
 	
