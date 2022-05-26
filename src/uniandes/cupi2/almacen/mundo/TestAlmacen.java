@@ -100,6 +100,7 @@ public class TestAlmacen {
 		assertEquals(0, this.almacen.buscarNodo("112").darValorVentas(),0);
 	}
 	
+	
 	@Test
 	public void darLista() {
 		
